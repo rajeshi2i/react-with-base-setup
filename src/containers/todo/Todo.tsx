@@ -19,17 +19,19 @@ const Todo = () => {
   }, [dispatch]);
 
   return (
-    <div style={{ padding: '15px' }}>
+    <div style={{ padding: '15px' }} className="text-primary">
       {pending ? (
         <div>Loading...</div>
       ) : error ? (
         <div>Error</div>
       ) : (
-        todos.map((todo, index) => (
-          <div style={{ marginBottom: '10px' }} key={todo.id}>
-            {++index}. {todo.title}
-          </div>
-        ))
+        <ul className="list-group">
+          {todos.map((todo, index) => (
+            <li className="list-group-item" key={todo.id}>
+              {++index}. {todo.title}
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );
