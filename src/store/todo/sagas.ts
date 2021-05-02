@@ -1,37 +1,21 @@
 import axios from 'axios';
-import { all, call, put, StrictEffect, takeLatest } from 'redux-saga/effects';
-// import { all, call, put, takeLatest } from 'typed-redux-saga';
+import { SagaIterator } from 'redux-saga';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { fetchTodoFailure, fetchTodoSuccess } from './actions';
 import { FETCH_TODO_REQUEST } from './actionTypes';
 import { ITodo } from './types';
 
-
-// Sample Response
-
-// [
-//   {
-//     'userId': 1,
-//     'id': 1,
-//     'title': 'Todo List 1',
-//     'completed': false
-//   },
-//   {
-//     'userId': 1,
-//     'id': 2,
-//     'title': 'Todo List 2',
-//     'completed': false
-//   }
-// ]
-
 const getTodos = () =>
-  axios.get<ITodo[]>('https://run.mocky.io/v3/9cb66c7c-9e4f-4574-b16d-6a89f2b8f328');
+  axios.get<ITodo[]>(
+    'https://run.mocky.io/v3/9cb66c7c-9e4f-4574-b16d-6a89f2b8f328'
+  );
 
 /*
   Worker Saga: Fired on FETCH_TODO_REQUEST action
 */
-function* fetchTodoSaga(): Generator<StrictEffect, void, any> {
-  try { 
+function* fetchTodoSaga(): SagaIterator {
+  try {
     const response = yield call(getTodos);
     yield put(
       fetchTodoSuccess({

@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
@@ -12,10 +10,14 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <Link to="/" className={`${styles.link} nav-link`}>TODO List</Link>
+              <Link to="/" className={`${styles.link} nav-link`}>
+                TODO List
+              </Link>
             </li>
             <li className="nav-item">
-              <Link to="/home"  className={`${styles.link} nav-link`}>Home</Link>
+              <Link to="/home" className={`${styles.link} nav-link`}>
+                Home
+              </Link>
             </li>
           </ul>
         </div>
